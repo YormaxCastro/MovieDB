@@ -21,7 +21,7 @@ public class MovieController {
 
      @RequestMapping({"","/","/index"})
     public String index(Model model){
-         model.addAttribute("popular",apiService.getPopularMovies(20));
+         model.addAttribute("popularMovies",apiService.getPopularMovies(20));
          return "index";
      }
 
