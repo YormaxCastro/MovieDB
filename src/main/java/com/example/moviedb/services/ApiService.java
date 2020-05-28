@@ -5,5 +5,14 @@ import java.util.List;
 
 public interface ApiService {
 
-    List<Movie> getPopularMovies(Integer limit);
+    List<Movie> getNowPlayingMovies();
+    List<Movie> getUpcomingMovies();
+    List<Movie> getTopRatedMovies();
+    List<Movie> getPopularMovies();
+
+
+    List<Movie> searchMoviesByKeyword(String keyword);
+
+
+
 }

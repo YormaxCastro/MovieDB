@@ -27,9 +27,24 @@ public class ApiServiceImplTest {
 
     @Test
     public void testGetPopularMovies(){
+        List<Movie> movies = apiService.getPopularMovies();
+        assertNotNull(movies);
+    }
 
-        List<Movie> movies = apiService.getPopularMovies(20);
-        assertEquals(20, movies.size());
+    @Test
+    public void testGetNowPlayingMovies(){
+        List<Movie> movies = apiService.getNowPlayingMovies();
+        assertNotNull(movies);
+    }
+
+    @Test
+    public void testSearchMovieByKeyword(){
+        List<Movie> movies = apiService.searchMoviesByKeyword("Back to The Future");
+
+        for(Movie m : movies){
+            System.out.println(m.getTitle());
+        }
+        assertNotNull(movies);
     }
 
 
