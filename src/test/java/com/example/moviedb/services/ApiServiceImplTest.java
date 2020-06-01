@@ -28,23 +28,37 @@ public class ApiServiceImplTest {
     @Test
     public void testGetPopularMovies(){
         List<Movie> movies = apiService.getPopularMovies();
-        assertNotNull(movies);
+        assert(!movies.isEmpty());
     }
 
     @Test
     public void testGetNowPlayingMovies(){
         List<Movie> movies = apiService.getNowPlayingMovies();
-        assertNotNull(movies);
+        assert(!movies.isEmpty());
+    }
+
+    @Test
+    public void testGetUpcomingMovies(){
+        List<Movie> movies = apiService.getUpcomingMovies();
+        assert(!movies.isEmpty());
+    }
+
+    @Test
+    public void getTopRatedMovies(){
+        List<Movie> movies = apiService.getTopRatedMovies();
+        assert(!movies.isEmpty());
     }
 
     @Test
     public void testSearchMovieByKeyword(){
-        List<Movie> movies = apiService.searchMoviesByKeyword("Back to The Future");
+        List<Movie> movies = apiService.getMoviesByKeyword("Back to the Future");
+        assert(!movies.isEmpty());
+    }
 
-        for(Movie m : movies){
-            System.out.println(m.getTitle());
-        }
-        assertNotNull(movies);
+    @Test
+    public void testSearchMovieBy(){
+        Movie movie = apiService.getMovieByid(105);
+        assert(movie.getTitle().equals("Back to the Future"));
     }
 
 

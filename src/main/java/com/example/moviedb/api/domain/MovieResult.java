@@ -1,8 +1,9 @@
 package com.example.moviedb.api.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MovieResult {
+public class MovieResult implements Serializable {
 
     private int page;
     private int totalResults;

@@ -70,16 +70,33 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public List<Movie> searchMoviesByKeyword(String keyword) {
+    public List<Movie> getMoviesByKeyword(String keyword) {
+
         UriComponentsBuilder uriBuilder = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/search/movie")
-                .queryParam("api_key", api_key)
-                .queryParam("query",keyword);
+                .queryParam("query",keyword)
+                .queryParam("api_key", api_key);
+        System.out.println( uriBuilder.toUriString() );
 
         MovieResult movieResult = restTemplate.getForObject(uriBuilder.toUriString(), MovieResult.class);
         return movieResult.getResults();
     }
+
+
+
+    @Override
+    public Movie getMovieByid(int id) {
+
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder
+                .fromUriString(api_url)
+                .path("/movie/"+id)
+                .queryParam("api_key", api_key);
+
+        Movie movie = restTemplate.getForObject(uriBuilder.toUriString(), Movie.class);
+        return movie;
+    }
+
 
 
 }

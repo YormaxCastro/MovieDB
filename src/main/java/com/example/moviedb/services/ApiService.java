@@ -11,7 +11,8 @@ public interface ApiService {
     List<Movie> getPopularMovies();
 
 
-    List<Movie> searchMoviesByKeyword(String keyword);
+    List<Movie> getMoviesByKeyword(String keyword);
+    Movie getMovieByid(int id);
 
 
 
