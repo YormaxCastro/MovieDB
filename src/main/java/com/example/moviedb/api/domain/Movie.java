@@ -1,126 +1,220 @@
+
 package com.example.moviedb.api.domain;
 
-import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Movie implements Serializable {
-    private double popularity;
-    private int voteCount;
-    private boolean video;
-    private int id;
-    private boolean adult;
-    private boolean backdropPath;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "popularity",
+        "vote_count",
+        "video",
+        "poster_path",
+        "id",
+        "adult",
+        "backdrop_path",
+        "original_language",
+        "original_title",
+        "genre_ids",
+        "title",
+        "vote_average",
+        "overview",
+        "release_date"
+})
+public class Movie {
+
+    @JsonProperty("popularity")
+    private Double popularity;
+    @JsonProperty("vote_count")
+    private Integer voteCount;
+    @JsonProperty("video")
+    private Boolean video;
+    @JsonProperty("poster_path")
+    private String posterPath;
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("adult")
+    private Boolean adult;
+    @JsonProperty("backdrop_path")
+    private String backdropPath;
+    @JsonProperty("original_language")
     private String originalLanguage;
+    @JsonProperty("original_title")
     private String originalTitle;
-    private List<Integer> genreIds;
+    @JsonProperty("genre_ids")
+    private List<Integer> genreIds = null;
+    @JsonProperty("title")
     private String title;
-    private int averageVote;
+    @JsonProperty("vote_average")
+    private Integer voteAverage;
+    @JsonProperty("overview")
     private String overview;
+    @JsonProperty("release_date")
     private String releaseDate;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    private final static long serialVersionUID = 270727596527329664L;
-
-    public double getPopularity() {
+    @JsonProperty("popularity")
+    public Double getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(double popularity) {
+    @JsonProperty("popularity")
+    public void setPopularity(Double popularity) {
         this.popularity = popularity;
     }
 
-    public int getVoteCount() {
+    @JsonProperty("vote_count")
+    public Integer getVoteCount() {
         return voteCount;
     }
 
-    public void setVoteCount(int voteCount) {
+    @JsonProperty("vote_count")
+    public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
     }
 
-    public boolean isVideo() {
+    @JsonProperty("video")
+    public Boolean getVideo() {
         return video;
     }
 
-    public void setVideo(boolean video) {
+    @JsonProperty("video")
+    public void setVideo(Boolean video) {
         this.video = video;
     }
 
-    public int getId() {
+    @JsonProperty("poster_path")
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    @JsonProperty("poster_path")
+    public void setPosterPath(String posterPath) {
+        this.posterPath = new String("https://image.tmdb.org/t/p/w500"+posterPath);
+    }
+
+    @JsonProperty("id")
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    @JsonProperty("id")
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public boolean isAdult() {
+    @JsonProperty("adult")
+    public Boolean getAdult() {
         return adult;
     }
 
-    public void setAdult(boolean adult) {
+    @JsonProperty("adult")
+    public void setAdult(Boolean adult) {
         this.adult = adult;
     }
 
-    public boolean isBackdropPath() {
+    @JsonProperty("backdrop_path")
+    public String getBackdropPath() {
         return backdropPath;
     }
 
-    public void setBackgropPath(boolean backdropPath) {
+    @JsonProperty("backdrop_path")
+    public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
 
+    @JsonProperty("original_language")
     public String getOriginalLanguage() {
         return originalLanguage;
     }
 
+    @JsonProperty("original_language")
     public void setOriginalLanguage(String originalLanguage) {
         this.originalLanguage = originalLanguage;
     }
 
+    @JsonProperty("original_title")
     public String getOriginalTitle() {
         return originalTitle;
     }
 
+    @JsonProperty("original_title")
     public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
     }
 
+    @JsonProperty("genre_ids")
     public List<Integer> getGenreIds() {
         return genreIds;
     }
 
+    @JsonProperty("genre_ids")
     public void setGenreIds(List<Integer> genreIds) {
         this.genreIds = genreIds;
     }
 
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public int getAverageVote() {
-        return averageVote;
+    @JsonProperty("vote_average")
+    public Integer getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setAverageVote(int averageVote) {
-        this.averageVote = averageVote;
+    @JsonProperty("vote_average")
+    public void setVoteAverage(Integer voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
+    @JsonProperty("overview")
     public String getOverview() {
         return overview;
     }
 
+    @JsonProperty("overview")
     public void setOverview(String overview) {
         this.overview = overview;
     }
 
+    @JsonProperty("release_date")
     public String getReleaseDate() {
         return releaseDate;
     }
 
+    @JsonProperty("release_date")
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("popularity", popularity).append("voteCount", voteCount).append("video", video).append("posterPath", posterPath).append("id", id).append("adult", adult).append("backdropPath", backdropPath).append("originalLanguage", originalLanguage).append("originalTitle", originalTitle).append("genreIds", genreIds).append("title", title).append("voteAverage", voteAverage).append("overview", overview).append("releaseDate", releaseDate).append("additionalProperties", additionalProperties).toString();
+    }
+
 }

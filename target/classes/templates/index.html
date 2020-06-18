@@ -6,15 +6,45 @@
 </head>
 <body>
 <div class="container">
-    <div th:insert="fragments/navbar :: navbar"></div>
-    <table>
-        <tr th:if="${popularMovies.empty}">
-        </tr>
-        <tr th:each="movie : ${popularMovies}">
-            <td><span th:text="${movie.title}"> Title </span></td>
+    <div th:insert="fragments/navbar :: navbar">
 
-        </tr>
-    </table>
+    </div>
+
+    <h2>Movies Playing Now</h2>
+    <div class="row movie-list list">
+        <div th:each="movie,it : ${playingNowMovies}">
+            <div th:replace="fragments/moviediv :: moviediv">
+            </div>
+        </div>
+    </div>
+
+    <h2>Popular Movies</h2>
+    <div class="row movie-list list">
+            <div th:each="movie,it : ${popularMovies}">
+                <div th:replace="fragments/moviediv :: moviediv">
+                </div>
+            </div>
+    </div>
+
+    <h2>Top Rated Movies</h2>
+    <div class="row movie-list list">
+        <div th:each="movie,it : ${topRatedMovies}">
+            <div th:replace="fragments/moviediv :: moviediv">
+            </div>
+        </div>
+    </div>
+
+    <h2>Upcoming Movies</h2>
+    <div class="row movie-list list">
+        <div th:each="movie,it : ${upcomingMovies}">
+            <div th:replace="fragments/moviediv :: moviediv">
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
+
 
 </body>

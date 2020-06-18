@@ -77,9 +77,8 @@ public class ApiServiceImpl implements ApiService {
                 .path("/search/movie")
                 .queryParam("query",keyword)
                 .queryParam("api_key", api_key);
-        System.out.println( uriBuilder.toUriString() );
-
         MovieResult movieResult = restTemplate.getForObject(uriBuilder.toUriString(), MovieResult.class);
+        System.out.println(movieResult.toString());
         return movieResult.getResults();
     }
 

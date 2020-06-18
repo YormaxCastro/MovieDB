@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+    </head>
+    <body>
+
+    <div class="col" th:fragment="moviediv" style="padding: 5px">
+        <div class="movie-listing">
+            <div>
+                <a th:href="google.com">
+                    <img th:src="${movie.posterPath}" alt="No image" class="img-fluid" style="height: 125px; width: 75px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>
