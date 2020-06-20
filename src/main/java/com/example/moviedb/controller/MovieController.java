@@ -20,7 +20,10 @@ public class MovieController {
 
      @RequestMapping({"","/","/index"})
     public String index(Model model){
-         model.addAttribute("popularMovies",apiService.getPopularMovies());
+         model.addAttribute("popularMovies", apiService.getPopularMovies());
+         model.addAttribute("upcomingMovies", apiService.getUpcomingMovies());
+         model.addAttribute("topRatedMovies", apiService.getTopRatedMovies());
+         model.addAttribute("playingNowMovies", apiService.getNowPlayingMovies());
          return "index";
      }
 
