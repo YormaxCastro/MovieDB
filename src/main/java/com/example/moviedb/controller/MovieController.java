@@ -28,9 +28,9 @@ public class MovieController {
          return "index";
      }
     @RequestMapping(value = "/movie")
-    String getName(@RequestParam(value = "movieId", defaultValue = "100") String movieId) {
+    String getMovie(@RequestParam(value = "movieId", defaultValue = "100") String movieId) {
          System.out.print(movieId);
-         return "index";
+         return "movie"; // @TODO Create the movie html template and fix the mapping
     }
 
 }
