@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Slf4j
@@ -26,5 +27,10 @@ public class MovieController {
          model.addAttribute("playingNowMovies", apiService.getNowPlayingMovies());
          return "index";
      }
+    @RequestMapping(value = "/movie")
+    String getName(@RequestParam(value = "movieId", defaultValue = "100") String movieId) {
+         System.out.print(movieId);
+         return "index";
+    }
 
 }
