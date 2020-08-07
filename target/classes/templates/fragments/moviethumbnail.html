@@ -6,10 +6,10 @@
     </head>
     <body>
 
-    <div class="col" th:fragment="moviediv" style="padding: 5px">
+    <div class="col" th:fragment="moviethumbnail" style="padding: 5px">
         <div class="movie-listing">
             <div>
-                <a th:href="'id/'+ ${movie.id}">
+                <a th:href="'movie?movieId='+ ${movie.id}">
                     <img th:src="${movie.posterPath}" alt="No image" class="img-fluid" style="height: 125px; width: 75px;">
                 </a>
             </div>

@@ -48,13 +48,13 @@ public class ApiServiceImplTest {
 
     @Test
     public void testSearchMovieByKeyword(){
-        List<Movie> movies = apiService.getMoviesByKeyword("Back to the Future");
+        List<Movie> movies = apiService.getMoviesByKeyword("The Avengers");
         assert(!movies.isEmpty());
     }
 
     @Test
-    public void testSearchMovieBy(){
-        Movie movie = apiService.getMovieByid(105);
+    public void testSearchMovieById(){
+        Movie movie = apiService.getMovieById(105l);
         assert(movie.getTitle().equals("Back to the Future"));
     }
 

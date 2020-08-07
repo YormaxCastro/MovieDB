@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{css/styling.css}">
+    <th:block th:include="fragments/headerfiles :: headerfiles">
+    </th:block>
+
+</head>
+<body>
+<div class="container">
+    <div th:insert="fragments/navbar :: navbar">
+
+    </div>
+    <div class="movie">
+        <img class="poster" th:src="${movie.posterPath}">
+
+        <h1 th:text="${movie.title}"></h1>
+        <br>
+
+        <h3>Plot</h3>
+        <p th:text="${movie.overview}"> </p>
+        <br>
+
+
+    </div>
+</div>
+</body>

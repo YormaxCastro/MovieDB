@@ -12,7 +12,7 @@ public interface ApiService {
 
 
     List<Movie> getMoviesByKeyword(String keyword);
-    Movie getMovieByid(int id);
+    Movie getMovieById(Long id);
 
 
 

@@ -28,9 +28,14 @@ public class MovieController {
          return "index";
      }
     @RequestMapping(value = "/movie")
-    String getMovie(@RequestParam(value = "movieId", defaultValue = "100") String movieId) {
-         System.out.print(movieId);
-         return "movie"; // @TODO Create the movie html template and fix the mapping
+    String getMovie(@RequestParam(value = "movieId", defaultValue = "100") String movieId, Model model) {
+         try {
+             long id = Long.parseLong(movieId);
+             model.addAttribute("movie", apiService.getMovieById(id));
+         } catch(Exception e){
+            System.out.println(movieId + " is invalid");
+        }
+         return "moviepage"; // @TODO Create the movie html template and fix the mapping
     }
 
 }

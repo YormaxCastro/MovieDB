@@ -2,6 +2,7 @@ package com.example.moviedb.services;
 
 import com.example.moviedb.api.domain.Movie;
 import com.example.moviedb.api.domain.MovieResult;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -78,24 +79,26 @@ public class ApiServiceImpl implements ApiService {
                 .queryParam("query",keyword)
                 .queryParam("api_key", api_key);
         MovieResult movieResult = restTemplate.getForObject(uriBuilder.toUriString(), MovieResult.class);
+        JsonNode jsonNode =restTemplate.getForObject(uriBuilder.toUriString(), JsonNode.class);
+        System.out.println(jsonNode.toString());
+        System.out.println(movieResult.getResults());
         System.out.println(movieResult.toString());
+        System.out.println(uriBuilder.toUriString());
         return movieResult.getResults();
     }
 
 
 
     @Override
-    public Movie getMovieByid(int id) {
+    public Movie getMovieById(Long id) {
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder
                 .fromUriString(api_url)
                 .path("/movie/"+id)
                 .queryParam("api_key", api_key);
-
         Movie movie = restTemplate.getForObject(uriBuilder.toUriString(), Movie.class);
         return movie;
     }
-
 
 
 }
